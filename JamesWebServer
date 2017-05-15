@@ -1,0 +1,51 @@
+윈도우의 경우, 바탕화면에 압축을 풀면 작동하지 않는다.
+따라서 C:/아래에 설치한다.
+
+제어판/ 프로그램 추가/제거 / Windows 기능 끄기/켜기 / 텔넷 클라이언트 [체크]
+
+[터미널 1]
+james-binary-2.3.2.1.tar.gz를 extract합니다.
+cd james-binary-2.3.2.1/bin
+chmod +x run.sh phoenix.sh
+
+sudo -E ./run.sh
+
+[터미널 2]
+telnet localhost 25 #전체모드로 접속
+telnet localhost 4555 #원격 관리자 서비스 모드로 접속
+
+quit or (Ctrl + C)
+
+! 만약 root/root로 접속되지 않는다면, 
+vi ~/james-2.3.2.1/apps/james/SAR-INF/config.xml
+안의 /root검색 후 password 수정
+
+$ sudo gedit /etc/apt/sources.list안에서
+$ deb http://us.archive.ubuntu.com/ubuntu precise main universe추가
+$ sudo apt-get update
+$ sudo apt-get install firestarter
+
+$ mysql -u root -p
+$ create database webmail
+$ create user 'webmail'@'%'identified by'2007';
+or
+$ create user webmail@localhost identified by'2007';
+$ mysql -u webmail -p
+$ Enter password: 2007
+
+$ mysql -u root -p
+$ use mysql;
+$ select host, user from user; # 사용자 목록을 확인, webmail이 없으면 다시 생성
+$ create user webmail@localhost identified by'2007';
+$ exit;
+
+$ mysql -u webmail -p
+$ Enter password: 2007
+
+$ mysql -u root -p
+GRANT ALL ON [database명].[table명] TO [user명]@[server명];
+$ GRANT ALL ON webmail.db to webmail@localhost;
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,INDEX,ALTER ON [database명].[tabel명] TO [user명]@[server명]; 
+$ GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,INDEX,ALTER ON webmail.db to webmail@localhost
+
+Linux나 Window모두에서 smtpServelet에서 오류가 나다면 프로젝트를 오른쪽 마우스로 클릭해서 아래에서 두번째쯤 reversing을 선택하면 오류가 해결된다.
