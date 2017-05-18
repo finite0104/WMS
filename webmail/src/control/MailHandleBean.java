@@ -1098,11 +1098,46 @@ public class MailHandleBean {
                 + " &nbsp;&nbsp; <a href=addr_book_show.jsp?add=1&name=" + param_name + "&email=" + email + "> 주소록 등록 </a>";
     }
 
+    public String showForwardingMailForm(int msgid) {
+        String result = null;
+        String forwardingMembers = null;
+        String subject = null;
+        String forwardContent = "\r\n\r\n*************** Original Message ***************\r\n";
+        
+        Properties props = System.getProperties();
+        
+        Session session = Session.getDefaultInstance(props);
+        session.setDebug(false);
+        
+        POP3Store pop3 = null;
+        
+        try{
+            pop3 = (POP3Store) session.getStore("pop3");
+            
+            pop3.connect(host, userid, passwd);
+            if(!pop3.isConnected()) {
+                pop3.close();
+                return "POP3Store Connection Error";
+            }
+            
+            Folder folder = pop3.getDefaultFolder();
+            folder = folder.getFolder("INBOX");
+            folder.open(Folder.READ_ONLY);
+            
+            Message msg = folder.getMessage(msgid);
+            
+        }catch(Exception e){
+            
+        }
+        
+        return null;
+    }
+    
     public String showReplyForm(int msgid) {
         String result = null;
         String replyTo = null;
         String replySubj = "Re: ";
-        String replyBody = "\r\n\r\n\r\n--------------- Original Message ---------------\r\n";
+        String replyBody = "\r\n\r\n\r\n*************** Original Message ***************r\n";
 
         // POP3 이용하여 메시지 헤더 정보중  replyTo, replySubj, replyBody 정보 가져오기
         // Property 설정
