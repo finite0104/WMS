@@ -20,7 +20,7 @@
             else if (request.getParameter("menu").equals("3")) {  // 메일 쓰기 %>
                 <jsp:forward page="addr_book.jsp"/>
          <%   }
-            else if (request.getParameter("menu").equals("99")) {  // Logout
+            else if (request.getParameter("menu").equals("99")) {
                 session.invalidate();
                 response.sendRedirect("index.jsp");
             }
