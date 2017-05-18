@@ -1,0 +1,8 @@
+rviz : topic 가시화
+
+gazebo : simulation rviz
+
+rviz
+Global options-odom
+laserscan -topic 설정시 world가 보인다.
+robot

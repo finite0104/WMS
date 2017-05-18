@@ -1,0 +1,15 @@
+play new helloworld
+
+cd helloworld
+play run
+
+web browser : http://localhost:9000
+
+play는 클래스 파일을 사용하지 않고 자바 소스파일을 그대로 읽는다.
+
+개발단계에서 중요한 두가지를 가능케한다.
+1. 자동적으로 실행중에 reload가능
+2. java exception시 더 나은 리포트를 생성한다.
+
+conf/routes 파일을 보면,
+GET을 받으면 이 경로를 통해서확인한다.
