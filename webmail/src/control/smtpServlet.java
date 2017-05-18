@@ -123,7 +123,7 @@ public class smtpServlet extends HttpServlet {
                     
                 }
                 else {  // attach files...
-                    String fileName = this.getFileNameOnly( fi.getName() );
+                    String fileName = fi.getName();
                     out.println("File name = " + fileName);
                     File fn = new File(uploadTargetDir + fileName);
                     // upload 완료. 추후 메일 전송후 해당 파일을 삭제하도록 해야 함.
@@ -190,7 +190,7 @@ public class smtpServlet extends HttpServlet {
             Iterator i = fileItems.iterator();
             while (i.hasNext()) {
                 FileItem fi = (FileItem)i.next();
-                String fileName = this.getFileNameOnly( fi.getName() );
+                String fileName = fi.getName();
                 out.println("File name = " + fileName);
                 File fn = new File(uploadTargetDir + fileName);
                 fi.write(fn);
@@ -202,15 +202,15 @@ public class smtpServlet extends HttpServlet {
         return true;  // upload successful!!!
     }
     
-    private String getFileNameOnly(String fileName) {
-        String result = null;
-        int index;
-        if ( (index = fileName.lastIndexOf('/')) != -1 ) {
-            result = fileName.substring(index+1);
-        }
-        else if ( (index = fileName.lastIndexOf('\\')) != -1 ) {
-            result = fileName.substring(index+1);
-        }
-        return result;
-    }
+//    private String getFileNameOnly(String fileName) {
+//        String result = null;
+//        int index;
+//        if ( (index = fileName.lastIndexOf('/')) != -1 ) {
+//            result = fileName.substring(index+1);
+//        }
+//        else if ( (index = fileName.lastIndexOf('\\')) != -1 ) {
+//            result = fileName.substring(index+1);
+//        }
+//        return result;
+//    }
 }

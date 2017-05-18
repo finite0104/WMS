@@ -20,6 +20,7 @@ mget.setPasswd((String)session.getAttribute("passwd"));
 
     <font face="굴림" size="3">
     <span style="background-color: #CCFF99">
+        <% out.print("a href=\"");
     <% out.print("<a href=\"reply.jsp?msgid=" + request.getParameter("msgid") + "\"> 답장 </a>,"); %> 
     재전송, 
     <% out.print("<a href=\"delete_message.jsp?msgid=" + request.getParameter("msgid") + "\"> 삭제 </a></html>"); %>  

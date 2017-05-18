@@ -32,8 +32,14 @@ public class MailHandleBean {
     //final String downloadTempDir = "/var/spool/webmail/download/";
     // 윈도우즈 환경 사용시
     //final String downloadTempDir = "C:/temp/download/";
+    /**
+     * Download File Directory.
+     */
     String downloadTempDir;
     // LJM 090430 : 수정해야 할 부분 - end   ------------------
+    /**
+     * OS Name property.
+     */
     private final String OSName = System.getProperty("os.name").toLowerCase();
     /**
      * Holds value of property userid.

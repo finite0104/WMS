@@ -1,0 +1,9 @@
+18/05/17 14:43:04 INFO  James: JAMES init...
+18/05/17 14:43:04 INFO  James: Local host is: 918-16-PC
+18/05/17 14:43:04 INFO  James: Handling mail for: localhost
+18/05/17 14:43:04 INFO  James: Handling mail for: 918-16-pc
+18/05/17 14:43:04 INFO  James: Handling mail for: 0:0:0:0:0:0:0:1
+18/05/17 14:43:04 INFO  James: Handling mail for: 127.0.0.1
+18/05/17 14:43:04 INFO  James: Local users repository opened
+18/05/17 14:43:04 INFO  James: Private Repository LocalInbox opened
+18/05/17 14:43:04 INFO  James: JAMES ...init end
