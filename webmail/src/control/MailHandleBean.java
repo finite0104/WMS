@@ -1126,6 +1126,9 @@ public class MailHandleBean {
             
             Message msg = folder.getMessage(msgid);
             
+            subject = msg.getSubject();
+            
+            forwardContent += msg.getContent();
         }catch(Exception e){
             
         }
