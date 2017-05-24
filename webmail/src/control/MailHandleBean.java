@@ -253,7 +253,8 @@ public class MailHandleBean {
 
                 // subject
                 //subject = msgs[i].getSubject();  // 수정 필요
-                subject = getMySubject((POP3Message) msgs[index]);
+                //subject = getMySubject((POP3Message) msgs[index]);
+                subject = msgs[index].getSubject();
 
 
                 // date
@@ -1126,6 +1127,12 @@ public class MailHandleBean {
             
             Message msg = folder.getMessage(msgid);
             
+            subject = "Foward Message : " + msg.getSubject();
+            
+            forwardContent += msg.getContent();
+            
+            //메세지의 파일이름 가져와서 다시 입력시키기
+            
         }catch(Exception e){
             
         }
@@ -1185,7 +1192,7 @@ public class MailHandleBean {
             }
 
             // replySubj
-            replySubj += this.getMySubject((POP3Message) msg);
+            replySubj += msg.getSubject();
 
             // replyBody
             replyBody += msg.getContent();
