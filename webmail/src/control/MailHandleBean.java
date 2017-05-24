@@ -1127,12 +1127,18 @@ public class MailHandleBean {
             
             Message msg = folder.getMessage(msgid);
             
+<<<<<<< HEAD
             subject = "Foward Message : " + msg.getSubject();
             
             forwardContent += msg.getContent();
             
             //메세지의 파일이름 가져와서 다시 입력시키기
             
+=======
+            subject = msg.getSubject();
+            
+            forwardContent += msg.getContent();
+>>>>>>> ff157d60c808e91d91e42eed8a8d407253ca4533
         }catch(Exception e){
             
         }
