@@ -1,0 +1,42 @@
+Return-Path: <mailtester@localhost>
+Delivered-To: mailtester@localhost
+Received: from 127.0.0.1 ([127.0.0.1])
+          by 918-16-PC (JAMES SMTP Server 2.3.2) with SMTP ID 1003
+          for <mailtester@localhost>;
+          Thu, 1 Jun 2017 10:27:33 +0900 (KST)
+Date: Thu, 1 Jun 2017 10:27:33 +0900 (KST)
+From: mailtester@localhost
+To: mailtester@localhost
+Message-ID: <1645590533.1.1496280453898@918-16-PC>
+Subject: 1234
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_0_1832602115.1496280453609"
+User-Agent: LJM-WM/0.1
+
+------=_Part_0_1832602115.1496280453609
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+test
+------=_Part_0_1832602115.1496280453609
+Content-Type: application/octet-stream; name=uploadmain.cpp
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename=uploadmain.cpp
+
+#include <iostream>
+using namespace std;
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char** argv) {
+	cout << "55";
+	return 0;
+}
+
+------=_Part_0_1832602115.1496280453609
+Content-Type: application/octet-stream; name=upload
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename=upload
+
+
+------=_Part_0_1832602115.1496280453609--

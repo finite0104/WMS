@@ -1,0 +1,3 @@
+01/06/17 10:15:15 INFO  James.Mailet: RemoteAddrNotInNetwork: Authorized addresses: [127.0.0.1/255.255.255.255]
+01/06/17 10:15:15 INFO  James.Mailet: RemoteDelivery: maxRetries is larger than total number of attempts specified. Increasing last delayTime with 19 attempts 
+01/06/17 10:15:15 INFO  James.Mailet: RemoteDelivery: Delay of 21600000 msecs is now attempted: 20 times

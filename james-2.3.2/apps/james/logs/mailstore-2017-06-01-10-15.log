@@ -1,0 +1,69 @@
+01/06/17 10:15:14 INFO  mailstore: JamesMailStore init...
+01/06/17 10:15:14 INFO  mailstore: Registering Repository instance of class org.apache.james.mailrepository.AvalonMailRepository to handle file protocol requests for repositories of type MAIL
+01/06/17 10:15:14 INFO  mailstore: Registering Repository instance of class org.apache.james.mailrepository.AvalonSpoolRepository to handle file protocol requests for repositories of type SPOOL
+01/06/17 10:15:14 INFO  mailstore: Registering Repository instance of class org.apache.james.mailrepository.JDBCMailRepository to handle db protocol requests for repositories of type MAIL
+01/06/17 10:15:14 INFO  mailstore: Registering Repository instance of class org.apache.james.mailrepository.JDBCSpoolRepository to handle db protocol requests for repositories of type SPOOL
+01/06/17 10:15:14 INFO  mailstore: Registering Repository instance of class org.apache.james.mailrepository.JDBCMailRepository to handle dbfile protocol requests for repositories of type MAIL
+01/06/17 10:15:14 INFO  mailstore: Registering Repository instance of class org.apache.james.mailrepository.JDBCSpoolRepository to handle dbfile protocol requests for repositories of type SPOOL
+01/06/17 10:15:14 INFO  mailstore: Registering Repository instance of class org.apache.james.mailrepository.MBoxMailRepository to handle mbox protocol requests for repositories of type MAIL
+01/06/17 10:15:14 INFO  mailstore: Registering Repository instance of class org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository to handle file protocol requests for repositories of type OBJECT
+01/06/17 10:15:14 INFO  mailstore: Registering Repository instance of class org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository to handle file protocol requests for repositories of type STREAM
+01/06/17 10:15:14 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository Store
+01/06/17 10:15:14 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\users
+01/06/17 10:15:14 INFO  mailstore: added repository: file://var/users/\OBJECT->org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository
+01/06/17 10:15:14 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\spool
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/spool/STREAM->org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository
+01/06/17 10:15:15 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\spool
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/spool/OBJECT->org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/spool/SPOOL->org.apache.james.mailrepository.AvalonSpoolRepository
+01/06/17 10:15:15 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\inboxes
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/inboxes/STREAM->org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository
+01/06/17 10:15:15 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\inboxes
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/inboxes/OBJECT->org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/inboxes/MAIL->org.apache.james.mailrepository.AvalonMailRepository
+01/06/17 10:15:15 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\error
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/error/STREAM->org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository
+01/06/17 10:15:15 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\error
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/error/OBJECT->org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/error/MAIL->org.apache.james.mailrepository.AvalonMailRepository
+01/06/17 10:15:15 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\outgoing
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/outgoing/STREAM->org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository
+01/06/17 10:15:15 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\outgoing
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/outgoing/OBJECT->org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/outgoing/SPOOL->org.apache.james.mailrepository.AvalonSpoolRepository
+01/06/17 10:15:15 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\spam
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/spam/STREAM->org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository
+01/06/17 10:15:15 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\spam
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/spam/OBJECT->org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/spam/MAIL->org.apache.james.mailrepository.AvalonMailRepository
+01/06/17 10:15:15 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\address-error
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/address-error/STREAM->org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository
+01/06/17 10:15:15 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\address-error
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/address-error/OBJECT->org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/address-error/MAIL->org.apache.james.mailrepository.AvalonMailRepository
+01/06/17 10:15:15 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\relay-denied
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/relay-denied/STREAM->org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository
+01/06/17 10:15:15 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository Store
+01/06/17 10:15:15 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\relay-denied
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/relay-denied/OBJECT->org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository
+01/06/17 10:15:15 INFO  mailstore: added repository: file://var/mail/relay-denied/MAIL->org.apache.james.mailrepository.AvalonMailRepository
+01/06/17 10:27:10 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository Store
+01/06/17 10:27:10 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\inboxes\mailtester
+01/06/17 10:27:10 INFO  mailstore: added repository: file://var/mail/inboxes/mailtester/STREAM->org.apache.james.mailrepository.filepair.File_Persistent_Stream_Repository
+01/06/17 10:27:10 INFO  mailstore: Init org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository Store
+01/06/17 10:27:10 INFO  mailstore: org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository opened in C:\Users\918-16\Desktop\WMS\james-2.3.2\apps\james\var\mail\inboxes\mailtester
+01/06/17 10:27:10 INFO  mailstore: added repository: file://var/mail/inboxes/mailtester/OBJECT->org.apache.james.mailrepository.filepair.File_Persistent_Object_Repository
+01/06/17 10:27:10 INFO  mailstore: added repository: file://var/mail/inboxes/mailtester/MAIL->org.apache.james.mailrepository.AvalonMailRepository
