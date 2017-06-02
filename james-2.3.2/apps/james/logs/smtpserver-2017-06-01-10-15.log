@@ -1,0 +1,36 @@
+01/06/17 10:15:15 INFO  smtpserver: SMTP Service uses default thread group.
+01/06/17 10:15:15 INFO  smtpserver: SMTP Service is running on: 918-16-PC
+01/06/17 10:15:15 INFO  smtpserver: SMTP Service handler hello name is: 918-16-PC
+01/06/17 10:15:15 INFO  smtpserver: SMTP Service handler connection timeout is: 360000
+01/06/17 10:15:15 INFO  smtpserver: SMTP Service connection backlog is: 5
+01/06/17 10:15:15 INFO  smtpserver: SMTP Service will allow a maximum of 30 connections.
+01/06/17 10:15:15 INFO  smtpserver: This SMTP server does not require authentication.
+01/06/17 10:15:15 INFO  smtpserver: Authorized addresses: [127.0.0.0/255.0.0.0]
+01/06/17 10:15:15 INFO  smtpserver: No maximum message size is enforced for this server.
+01/06/17 10:15:15 INFO  smtpserver: The idle timeout will be reset every 20480 bytes.
+01/06/17 10:15:15 INFO  smtpserver: Added Commandhandler: org.apache.james.smtpserver.VrfyCmdHandler
+01/06/17 10:15:15 INFO  smtpserver: Added Commandhandler: org.apache.james.smtpserver.AuthCmdHandler
+01/06/17 10:15:15 INFO  smtpserver: Added Commandhandler: org.apache.james.smtpserver.QuitCmdHandler
+01/06/17 10:15:15 INFO  smtpserver: Added Commandhandler: org.apache.james.smtpserver.HelpCmdHandler
+01/06/17 10:15:15 INFO  smtpserver: Added Commandhandler: org.apache.james.smtpserver.HeloCmdHandler
+01/06/17 10:15:15 INFO  smtpserver: Added Commandhandler: org.apache.james.smtpserver.MailCmdHandler
+01/06/17 10:15:15 INFO  smtpserver: Added Commandhandler: org.apache.james.smtpserver.DataCmdHandler
+01/06/17 10:15:15 INFO  smtpserver: Added Commandhandler: org.apache.james.smtpserver.RcptCmdHandler
+01/06/17 10:15:15 INFO  smtpserver: Added Commandhandler: org.apache.james.smtpserver.EhloCmdHandler
+01/06/17 10:15:15 INFO  smtpserver: Added MessageHandler: org.apache.james.smtpserver.SendMailHandler
+01/06/17 10:15:15 INFO  smtpserver: Added Commandhandler: org.apache.james.smtpserver.NoopCmdHandler
+01/06/17 10:15:15 INFO  smtpserver: Added Commandhandler: org.apache.james.smtpserver.ExpnCmdHandler
+01/06/17 10:15:15 INFO  smtpserver: Added Commandhandler: org.apache.james.smtpserver.RsetCmdHandler
+01/06/17 10:15:15 INFO  smtpserver: SMTP Service started plain:25
+01/06/17 10:27:33 INFO  smtpserver: Connection from 127.0.0.1 (127.0.0.1)
+01/06/17 10:27:34 INFO  smtpserver: Successfully spooled mail Mail1496280453915-0 from mailtester@localhost on 127.0.0.1 for [mailtester@localhost]
+01/06/17 10:28:56 INFO  smtpserver: Connection from 127.0.0.1 (127.0.0.1)
+01/06/17 10:28:56 INFO  smtpserver: Successfully spooled mail Mail1496280536552-1 from mailtester@localhost on 127.0.0.1 for [mailtester@localhost]
+01/06/17 10:29:35 INFO  smtpserver: Connection from 127.0.0.1 (127.0.0.1)
+01/06/17 10:29:35 INFO  smtpserver: Successfully spooled mail Mail1496280575261-2 from mailtester@localhost on 127.0.0.1 for [mailtester@localhost]
+01/06/17 10:30:06 INFO  smtpserver: Connection from 127.0.0.1 (127.0.0.1)
+01/06/17 10:30:06 INFO  smtpserver: Successfully spooled mail Mail1496280606995-3 from mailtester@localhost on 127.0.0.1 for [mailtester@localhost]
+01/06/17 10:30:35 INFO  smtpserver: Connection from 127.0.0.1 (127.0.0.1)
+01/06/17 10:30:35 INFO  smtpserver: Successfully spooled mail Mail1496280635553-4 from mailtester@localhost on 127.0.0.1 for [mailtester@localhost]
+01/06/17 11:53:23 INFO  smtpserver: Connection from 127.0.0.1 (127.0.0.1)
+01/06/17 11:53:23 INFO  smtpserver: Successfully spooled mail Mail1496285603021-5 from mailtester@localhost on 127.0.0.1 for [mailtester@localhost]

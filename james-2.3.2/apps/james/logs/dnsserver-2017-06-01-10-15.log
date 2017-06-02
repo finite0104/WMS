@@ -1,0 +1,9 @@
+01/06/17 10:15:14 INFO  dnsserver: Autodiscovery is enabled - trying to discover your system's DNS Servers
+01/06/17 10:15:14 INFO  dnsserver: Adding autodiscovered server 113.198.238.2
+01/06/17 10:15:14 INFO  dnsserver: Adding autodiscovered server 113.198.254.2
+01/06/17 10:15:14 INFO  dnsserver: Adding autodiscovered server 192.168.85.1
+01/06/17 10:15:14 INFO  dnsserver: Adding autodiscovered server 192.168.157.2
+01/06/17 10:15:14 INFO  dnsserver: DNS Server is: 113.198.238.2
+01/06/17 10:15:14 INFO  dnsserver: DNS Server is: 113.198.254.2
+01/06/17 10:15:14 INFO  dnsserver: DNS Server is: 192.168.85.1
+01/06/17 10:15:14 INFO  dnsserver: DNS Server is: 192.168.157.2

@@ -4,14 +4,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/918-16/Documents/WMS/webmail/web/subframes/mail_send_form2.jsp</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/how32/Desktop/작업물/동의대%204-1/객체지향%20설계/WMS/webmail/src/control/MailHandleBean.java</file>
+            <file>file:/C:/Users/how32/Desktop/작업물/동의대%204-1/객체지향%20설계/WMS/webmail/src/control/DownloadServlet.java</file>
+            <file>file:/C:/Users/how32/Desktop/작업물/동의대%204-1/객체지향%20설계/WMS/webmail/src/control/smtpServlet.java</file>
+=======
+>>>>>>> daf962bf57054e5cffe7f8905ed95281f0417520
             <file>file:/C:/Users/918-16/Documents/WMS/webmail/web/subframes/get_message.jsp</file>
             <file>file:/C:/Users/918-16/Documents/WMS/webmail/src/control/MailHandleBean.java</file>
             <file>file:/C:/Users/918-16/Documents/WMS/webmail/web/subframes/mail_send_form.jsp</file>
             <file>file:/C:/Users/918-16/Documents/WMS/webmail/web/subframes/forward_message.jsp</file>
             <file>file:/C:/Users/918-16/Documents/WMS/webmail/web/mail_read.jsp</file>
             <file>file:/C:/Users/918-16/Documents/WMS/webmail/web/subframes/smtp.jsp</file>
+<<<<<<< HEAD
             <file>file:/C:/Users/918-16/Documents/WMS/webmail/web/mail_send.jsp</file>
+=======
+>>>>>>> ff157d60c808e91d91e42eed8a8d407253ca4533
+>>>>>>> daf962bf57054e5cffe7f8905ed95281f0417520
         </group>
     </open-files>
 </project-private>

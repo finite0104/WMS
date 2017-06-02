@@ -1,0 +1,22 @@
+Return-Path: <mailtester@localhost>
+Delivered-To: mailtester@localhost
+Received: from 127.0.0.1 ([127.0.0.1])
+          by 918-16-PC (JAMES SMTP Server 2.3.2) with SMTP ID 731
+          for <mailtester@localhost>;
+          Thu, 1 Jun 2017 11:53:23 +0900 (KST)
+Date: Thu, 1 Jun 2017 11:53:23 +0900 (KST)
+From: mailtester@localhost
+To: mailtester@localhost
+Message-ID: <326779409.11.1496285602985@918-16-PC>
+Subject:  mailtest1234
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_10_988122880.1496285602984"
+User-Agent: LJM-WM/0.1
+
+------=_Part_10_988122880.1496285602984
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+123456
+------=_Part_10_988122880.1496285602984--

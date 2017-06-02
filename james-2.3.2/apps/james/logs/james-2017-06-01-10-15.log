@@ -1,0 +1,9 @@
+01/06/17 10:15:15 INFO  James: JAMES init...
+01/06/17 10:15:15 INFO  James: Local host is: 918-16-PC
+01/06/17 10:15:15 INFO  James: Handling mail for: localhost
+01/06/17 10:15:15 INFO  James: Handling mail for: 918-16-pc
+01/06/17 10:15:15 INFO  James: Handling mail for: 0:0:0:0:0:0:0:1
+01/06/17 10:15:15 INFO  James: Handling mail for: 127.0.0.1
+01/06/17 10:15:15 INFO  James: Local users repository opened
+01/06/17 10:15:15 INFO  James: Private Repository LocalInbox opened
+01/06/17 10:15:15 INFO  James: JAMES ...init end
