@@ -1134,14 +1134,11 @@ public class MailHandleBean {
             
             subject = "Foward Message : " + msg.getSubject();
             
-<<<<<<< HEAD
             getMessageContent(msg);
-=======
+            
             forwardContent += msg.getContent();
             
-            //메세지의 파일이름 가져와서 다시 입력시키기
->>>>>>> daf962bf57054e5cffe7f8905ed95281f0417520
-            
+            //메세지의 파일이름 가져와서 다시 입력시키기            
         }catch(Exception e){
             
         }
@@ -1159,11 +1156,11 @@ public class MailHandleBean {
             result += "<p> 파일 첨부1: <input type=\"file\" name=\"file1\" size=80> <br> </p>"
                     + "<p> 파일 첨부2: <input type=\"file\" name=\"file2\" size=80> <br> </p>";
         }else if(fileList.size() == 1) {
-            result += "<p> 파일 첨부1: <input type=\"text\" name=\"file1\" value=\"" + fileList.get(0).toString() +"\" readonly> <br> </p>"
+            result += "<p> 파일 첨부1: <input type=\"text\" name=\"file1\" value=\"" + downloadTempDir + this.userid + "/" + fileList.get(0).toString() +"\" readonly> <br> </p>"
                     + "<p> 파일 첨부2: <input type=\"file\" name=\"file2\" size=80> <br> </p>";
         }else if(fileList.size() == 2) {
-            result += "<p> 파일 첨부1: <input type=\"text\" name=\"file1\" value=\"" + fileList.get(0).toString() +"\" readonly> <br> </p>"
-                    + "<p> 파일 첨부2: <input type=\"text\" name=\"file2\" value=\"" + fileList.get(1).toString() +"\" > <br> </p>";
+            result += "<p> 파일 첨부1: <input type=\"text\" name=\"file1\" value=\"" + downloadTempDir + this.userid + "/" + fileList.get(0).toString() +"\" readonly> <br> </p>"
+                    + "<p> 파일 첨부2: <input type=\"text\" name=\"file2\" value=\"" + downloadTempDir + this.userid + "/" + fileList.get(1).toString() +"\" > <br> </p>";
         }
             result += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "
                     + "<input type=\"submit\" value=\"메일 보내기\" name=\"B1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "
