@@ -42,7 +42,7 @@ public class smtpServlet extends HttpServlet {
         if(OSName.contains("win")) {
             //window 운영체제
             uploadTempDir = "C:/temp/upload/";
-            uploadTargetDir = "C:/temp/upload";
+            uploadTargetDir = "C:/temp/upload/";
         }else if(OSName.contains("nix") 
                 || OSName.contains("nux")|| OSName.contains("aix")) {
             //unix 운영체제들

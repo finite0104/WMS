@@ -17,8 +17,8 @@
 // JDBC driver loading
             Class.forName(jdbc_driver);
 
-            String mysql_userid = "webmail";      // 제대로 실행 안 될 것임. 정확한 사용자 ID 필요
-            String mysql_password = "2007";  // 제대로 실행 안 될 것임. 정확한 사용자 암호 필요
+            String mysql_userid = "root";      // 제대로 실행 안 될 것임. 정확한 사용자 ID 필요
+            String mysql_password = "apmsetup";  // 제대로 실행 안 될 것임. 정확한 사용자 암호 필요
             conn = DriverManager.getConnection(jdbc_url, mysql_userid, mysql_password);
 
             stmt = conn.createStatement();

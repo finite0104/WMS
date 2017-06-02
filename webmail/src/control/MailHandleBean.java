@@ -82,6 +82,9 @@ public class MailHandleBean {
      */
     private int pageno;
 
+    String content;
+    ArrayList fileList;
+    
     /** Creates a new instance of GetMailBean */
     public MailHandleBean() {
         cc = null;
@@ -89,6 +92,8 @@ public class MailHandleBean {
         msgBody = null;
         file1 = null;
         file2 = null;
+        content = null;
+        fileList = null;
         setDirectory();
     }
 
@@ -1097,12 +1102,12 @@ public class MailHandleBean {
         return "<a href=mail_send_form2.jsp?recv=" + email + "> " + name + " </a> "
                 + " &nbsp;&nbsp; <a href=addr_book_show.jsp?add=1&name=" + param_name + "&email=" + email + "> 주소록 등록 </a>";
     }
-
+    
     public String showForwardingMailForm(int msgid) {
         String result = null;
-        String forwardingMembers = null;
         String subject = null;
         String forwardContent = "\r\n\r\n*************** Original Message ***************\r\n";
+        fileList = new ArrayList();
         
         Properties props = System.getProperties();
         
@@ -1128,12 +1133,75 @@ public class MailHandleBean {
             
             subject = msg.getSubject();
             
-            forwardContent += msg.getContent();
+            getMessageContent(msg);
+            
         }catch(Exception e){
             
         }
         
-        return null;
+        result = "<form method=\"POST\" action=\"../smtpServlet\" enctype=\'multipart/form-data\'> "
+                + "<p>받는 사람 <input type=\"text\" name=\"to\" size=\"80\" value=\"" + "\"></p>"
+                + "<p>CC:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                + "<input type=\"text\" name=\"cc\" size=\"80\"></p>"
+                + "<p>메일 제목 <input type=\"text\" name=\"subj\" size=\"80\" value=\" " + subject + "\"></p>"
+                + "<p>내 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 용</p>"
+                + //"<p><textarea rows=\"10\" name=\"body\" cols=\"80\" value=\"" + replyBody + "\"></textarea></p>" +
+                "<p><textarea rows=\"15\" name=\"body\" cols=\"80\">" + forwardContent + content + "</textarea></p>"
+                + "<p> </p>";
+        if(fileList.isEmpty()) {
+            result += "<p> 파일 첨부1: <input type=\"file\" name=\"file1\" size=80> <br> </p>"
+                    + "<p> 파일 첨부2: <input type=\"file\" name=\"file2\" size=80> <br> </p>";
+        }else if(fileList.size() == 1) {
+            result += "<p> 파일 첨부1: <input type=\"text\" name=\"file1\" value=\"" + fileList.get(0).toString() +"\" readonly> <br> </p>"
+                    + "<p> 파일 첨부2: <input type=\"file\" name=\"file2\" size=80> <br> </p>";
+        }else if(fileList.size() == 2) {
+            result += "<p> 파일 첨부1: <input type=\"text\" name=\"file1\" value=\"" + fileList.get(0).toString() +"\" readonly> <br> </p>"
+                    + "<p> 파일 첨부2: <input type=\"text\" name=\"file2\" value=\"" + fileList.get(1).toString() +"\" > <br> </p>";
+        }
+            result += "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "
+                    + "<input type=\"submit\" value=\"메일 보내기\" name=\"B1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "
+                    + "<input type=\"reset\" value=\"다시 입력\" name=\"B2\"></p>"
+                    + "</form>";
+        
+        fileList = null;
+        
+        return result;
+    }
+    
+    private void getMessageContent(Part msg) {
+        try {
+            String disposition = msg.getDisposition();
+            
+            if(disposition != null && (disposition.equalsIgnoreCase(Part.ATTACHMENT) 
+                    || disposition.equalsIgnoreCase(Part.INLINE))) {
+                //첨부파일인 경우 처리
+                String fileName = MimeUtility.decodeText(msg.getFileName());
+                if (fileName != null) {
+                    //첨부파일이 있는 경우
+                    fileList.add(fileName);
+                }
+            }else {
+                //메일 본문 처리
+                if(msg.isMimeType("text/*")) {
+                    content = (String)msg.getContent();
+                }else if(msg.isMimeType("multipart/alternative")) {
+                    Multipart mp = (Multipart)msg.getContent();
+                    for(int i=0;i<mp.getCount();i++) {
+                        Part part = mp.getBodyPart(i);
+                        if(part.isMimeType("text/plain")) {
+                            getMessageContent(msg);
+                        }
+                    }
+                }else if(msg.isMimeType("multipart/*")) {
+                    Multipart mp = (Multipart)msg.getContent();
+                    for(int i=0;i<mp.getCount();i++) {
+                        getMessageContent(mp.getBodyPart(i));
+                    }
+                }
+            }
+        }catch (Exception e) {
+            System.out.println("getMessageContent error: " + e);
+        }
     }
     
     public String showReplyForm(int msgid) {
@@ -1188,10 +1256,10 @@ public class MailHandleBean {
             }
 
             // replySubj
-            replySubj += this.getMySubject((POP3Message) msg);
+            replySubj += msg.getSubject();
 
             // replyBody
-            replyBody += msg.getContent();
+            replyBody += (String)msg.getContent();
 
         } catch (Exception ex) {
             System.out.println("showReplyForm error: " + ex);
@@ -1223,7 +1291,7 @@ public class MailHandleBean {
         return result;
 
     }
-
+    
     /**
      * Getter for property file1.
      * @return Value of property file1.
