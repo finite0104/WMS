@@ -9,6 +9,7 @@
         
         <p><a href="../handle.jsp?menu=1" target=_top> 메일 읽기 </a></p>
         <p><a href="../handle.jsp?menu=2" target=_top> 메일 쓰기 </a></p>
+        <p><a href="../handle.jsp?menu=4" target=_top> 휴지통 </a></p>
         <p><a href="../handle.jsp?menu=3" target=_top> 주소록 </a></p>
         <p><a href="../handle.jsp?menu=99" target=_top> Logout </a></p>
 
