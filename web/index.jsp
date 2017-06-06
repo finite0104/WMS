@@ -1,3 +1,4 @@
+<%@page import="control.CommandType"%>
 <%@page contentType="text/html; charset=euc-kr"%>
 <%@page pageEncoding="UTF-8"%>
 
@@ -32,7 +33,7 @@ Description:
 
 
         <div id="login_form">
-        <form method="POST" action="login_check.jsp">
+        <form method="POST" action="Login.do?command=<%=CommandType.InOutState.LOGIN.getValue()%>">
             사용자: <input type="text" name="userid" size="20"> <br />
             암&nbsp;&nbsp;&nbsp;호: <input type="password" name="passwd" size="20"> <br /> <br />
             <input type="submit" value="로그인" name="B1">&nbsp;&nbsp;&nbsp;
