@@ -26,14 +26,26 @@ if (_pageno.equals("-1") == false) {
 else {
     mget.setPageno(Integer.parseInt((String)session.getAttribute("pageno")));
 }
+
+String mailSearch = (String)request.getParameter("search");
+if (mailSearch != null && !mailSearch.isEmpty() && !mailSearch.equals("")) {
+    mget.setMailSearch(mailSearch);
+}
 %>
 
 
 <html>
     <head><title>Message List Page</title></head>
+    <script type="text/javascript">
+        function mailSearch() {
+            var search = document.getElementById("search").value;
+            
+            location.href="list_mail.jsp?pageno=" + <%= _pageno %> + "&search=" + search;
+        }
+    </script>
     <body bgcolor="#CCFF99">
-    
-    <%= mget.listMessages() %>
+        
+        <%= mget.listMessages() %>
 
     </body>
 </html>

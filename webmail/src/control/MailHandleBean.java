@@ -82,6 +82,19 @@ public class MailHandleBean {
      */
     private int pageno;
 
+    /**
+     * 메일 검색 후 출력을 위한 변수
+     */
+    private String mailSearch;
+    
+    public String getMailSearch() {
+        return mailSearch;
+    }
+
+    public void setMailSearch(String mailSearch) {
+        this.mailSearch = mailSearch;
+    }
+
     String content;
     ArrayList fileList;
     
@@ -166,6 +179,7 @@ public class MailHandleBean {
 
 
         // 메시지 제목 보여주기
+        String mail_search = "<input type=\"text\" id=\"search\"></input> <button onclick=\"mailSearch()\" value=\"검색\"></button><br/><br/>";
         String table_start = "<table border=\"1\" width=\"100%\" height=\"30\">";
         String table_end = "</table>";
         String table_title = "<tr> "
@@ -177,7 +191,7 @@ public class MailHandleBean {
                 + " </tr>";
 
         //String result = table_start + table_title;
-        String result = table_start + table_title;
+        String result = mail_search + table_start + table_title;
 
         // Property 설정
         Properties props = System.getProperties();
@@ -213,7 +227,28 @@ public class MailHandleBean {
 
             // 수신한 메시지 갯수 파악
             int totalMessages = folder.getMessageCount();
+            int searchCount = 0;
+            
+            if(!mailSearch.equals("") && !mailSearch.isEmpty() && mailSearch != null) {
+                //검색단어가 존재하는경우
+                Message[] msgs = folder.getMessages();
+                FetchProfile fp = new FetchProfile();
+                fp.add(FetchProfile.Item.ENVELOPE);
+                fp.add("X-mailer");
+                folder.fetch(msgs, fp);
+            
+                for(int i=0;i<totalMessages;i++) {
+                    //메시지 데이터 뽑아와서 비교
+                    String search_sender = getMyFrom((POP3Message) msgs[i]);
+                    String search_subject = msgs[i].getSubject();
+                    
+                    //if비교작업
+                    
+                }
+            }
 
+            totalMessages = totalMessages - searchCount;
+            
             /* LJM 041207 - page당 10개의 메시지 제목 출력하도록 수정
              *
              *      message no.  (messagesPerPage = 10인 경우)
@@ -242,9 +277,7 @@ public class MailHandleBean {
             fp.add(FetchProfile.Item.ENVELOPE);
             fp.add("X-mailer");
             folder.fetch(msgs, fp);
-
-
-
+            
             //for (int i=msgs.length-1; i>=0; i--) {
             for (int i = start; i >= end; i--) {
                 // msgs[i]에서 sender, subject, date 정보 추출
@@ -798,7 +831,7 @@ public class MailHandleBean {
             store.connect(this.host, this.userid, this.passwd);
             if (store.isConnected() == false) {
                 store.close();
-                return new String("메일 삭제가 실패하였습니다");
+                return "메일 삭제가 실패하였습니다";
             }
 
             // Folder 설정

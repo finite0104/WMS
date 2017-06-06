@@ -30,7 +30,6 @@ Description:
         (<%= session.getAttribute("host")%>)
         </div>
 
-
         <div id="login_form">
         <form method="POST" action="login_check.jsp">
             사용자: <input type="text" name="userid" size="20"> <br />
