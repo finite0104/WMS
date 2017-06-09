@@ -1,0 +1,31 @@
+/* 
+    Document   : index
+    Created on : 2010. 4. 15, ¿ÀÈÄ 9:46:43
+    Author     : jongmin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+body {
+    background-color: rgb(200, 251, 196);
+}
+
+#login_title {
+    font-size: 200%;
+    color: navy;
+    border-bottom: solid;
+}
+
+#login_form {
+    text-align: center;
+    margin-top: 100px;
+}
