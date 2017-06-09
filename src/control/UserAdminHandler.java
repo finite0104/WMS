@@ -47,6 +47,7 @@ public class UserAdminHandler extends HttpServlet {
             
             if(select == CommandType.AddDelCommand.ADD_USER_COMMAND.getValue()){
                 addUser(request, response, out);
+                response.sendRedirect("admin_menu.jsp");
             }
             else if(select == CommandType.AddDelCommand.DELETE_USER_COMMAND.getValue()){
                 deleteUsers(request, response, out);
@@ -116,12 +117,11 @@ public class UserAdminHandler extends HttpServlet {
             out.flush();
             
             if(agent.addUser(userid, password)){
-                out.println("Go to main.jsp");////////////need to change error
-                response.sendRedirect("admin_menu.jsp");
-                //getUserAddSuccessPopUp();
+                out.println(getUserAddSuccessPopUp());////////////need to change error
+                
             }
             else{
-                getUserAddFailurePopUp();
+                out.println(getUserAddFailurePopUp());
             }
             out.flush();
         }catch(Exception ex){
