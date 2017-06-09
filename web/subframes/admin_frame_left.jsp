@@ -14,16 +14,17 @@
         <title>WebMailSystem Menu</title>
     </head>
     <body>
+        <!--make all green background-->
         <br><br>
         <span style="color: indigo">
             <b>User: <%=session.getAttribute("userid")%><b/>
         </span>
         <br>
         
-        <p><a href="add_user.jsp" target=_top> User add</a></p>
-        <p><a href="../handle.jsp?menu=2" target=_top> User del (change!!) </a></p>
+        <p><a href="subframes/add_user.jsp" target=_top> User add</a></p>
+        <p><a href="subframes/delete_user.jsp" target=_top> User del (change!!) </a></p>
         
-        <p><a href="../Login.do?command=<%=InOutState.LOGOUT.getValue()%>"> logout </a></p>
+        <p><a href="Login.do?command=<%=InOutState.LOGOUT.getValue()%>"> logout </a></p>
         
     </body>
 </html>
