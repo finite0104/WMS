@@ -227,27 +227,6 @@ public class MailHandleBean {
 
             // 수신한 메시지 갯수 파악
             int totalMessages = folder.getMessageCount();
-            int searchCount = 0;
-            
-            if(!mailSearch.equals("") && !mailSearch.isEmpty() && mailSearch != null) {
-                //검색단어가 존재하는경우
-                Message[] msgs = folder.getMessages();
-                FetchProfile fp = new FetchProfile();
-                fp.add(FetchProfile.Item.ENVELOPE);
-                fp.add("X-mailer");
-                folder.fetch(msgs, fp);
-            
-                for(int i=0;i<totalMessages;i++) {
-                    //메시지 데이터 뽑아와서 비교
-                    String search_sender = getMyFrom((POP3Message) msgs[i]);
-                    String search_subject = msgs[i].getSubject();
-                    
-                    //if비교작업
-                    
-                }
-            }
-
-            totalMessages = totalMessages - searchCount;
             
             /* LJM 041207 - page당 10개의 메시지 제목 출력하도록 수정
              *
@@ -349,6 +328,197 @@ public class MailHandleBean {
         return result;
     }
 
+    public String getSearchMessage() {
+        // temporary user directory에 남아있는 파일 모두 삭제
+        String tempUserDir = this.downloadTempDir + this.userid;
+        File dir = new File(tempUserDir);
+        if (dir.exists()) {
+            File[] fileList = dir.listFiles();
+            for (int i = 0; i < fileList.length; i++) {
+                fileList[i].delete();
+            }
+        }
+
+
+        // 메시지 제목 보여주기
+        String mail_search = "<input type=\"text\" id=\"search\"></input> <button onclick=\"mailSearch()\" value=\"검색\"></button><br/><br/>";
+        String table_start = "<table border=\"1\" width=\"100%\" height=\"30\">";
+        String table_end = "</table>";
+        String table_title = "<tr> "
+                + " <td width=\"5%\" height=\"16\" align=\"center\"> No. </td> "
+                + " <td width=\"20%\" height=\"16\" align=\"center\"> 보낸 사람 </td>"
+                + " <td width=\"40%\" height=\"16\" align=\"center\"> 제목 </td>     "
+                + " <td width=\"15%\" height=\"16\" align=\"center\"> 보낸 날짜 </td>   "
+                + " <td width=\"5%\" height=\"16\" align=\"center\"> 삭제 </td>   "
+                + " </tr>";
+
+        //String result = table_start + table_title;
+        String result = mail_search + table_start + table_title;
+
+        // Property 설정
+        Properties props = System.getProperties();
+
+        // Session 설정
+        Session session = Session.getDefaultInstance(props);
+        session.setDebug(false);
+
+        // Store 설정
+        POP3Store store = null;
+        String sender = null;
+        String subject = null;
+        String date = null;
+
+        // LJM 041207 - 페이지 단위 메일 목록 보여주기에 사용됨.
+        int totalPageCount = 0;
+
+        try {
+            store = (POP3Store) session.getStore("pop3");
+            //System.out.println("host = " + host + ", user = " + userid + ", passwd = " + passwd);
+            store.connect(this.host, this.userid, this.passwd);
+            if (store.isConnected() == false) {
+                result += "Not connected for some reason...";
+                result += table_end;
+                store.close();
+                return result;
+            }
+
+            // Folder 설정
+            Folder folder = store.getDefaultFolder();
+            folder = folder.getFolder("INBOX");
+            folder.open(Folder.READ_ONLY);
+
+            // 수신한 메시지 갯수 파악
+            int totalMessages = folder.getMessageCount();
+            int searchCount = 0;
+            
+            if(!mailSearch.equals("") && !mailSearch.isEmpty() && mailSearch != null) {
+                //검색단어가 존재하는경우
+                Message[] msgs = folder.getMessages();
+                FetchProfile fp = new FetchProfile();
+                fp.add(FetchProfile.Item.ENVELOPE);
+                fp.add("X-mailer");
+                folder.fetch(msgs, fp);
+            
+                for(int i=0;i<totalMessages;i++) {
+                    //메시지 데이터 뽑아와서 비교
+                    String search_subject = msgs[i].getSubject();
+                    
+                    //if비교작업
+                    if(search_subject.contains(mailSearch)) {
+                        //검색하고자하는 문자가 있는 경우
+                        searchCount++;
+                    }
+                }
+            }
+            
+            if(searchCount == 0) {
+                result += "Not Searched Message..";
+                store.close();
+                return result;
+            }else if(searchCount > 0) {
+                totalMessages = searchCount;
+            }
+            
+            /* LJM 041207 - page당 10개의 메시지 제목 출력하도록 수정
+             *
+             *      message no.  (messagesPerPage = 10인 경우)
+             *          22    21   20     ...     13    12   11   10      ...      3     2     1     0
+             *           |<--  pageno = 1       -->|     |<--  pageno = 2       -->|     |  pageno=3 |
+             *           ^ start                   ^ end ^ start                   ^ end ^ start     ^ end
+             *
+             */
+            final int messagesPerPage = 10;
+            // totalPageCount는 메일 제목 목록 표시후 페이지 단위로 메일 제목 목록을
+            // 볼 수 있도록 page indicator를 하단에 표시할 때 사용됨.
+            totalPageCount = (totalMessages / messagesPerPage);
+            if (totalMessages % messagesPerPage != 0) {
+                totalPageCount++;
+            }
+
+            int start = totalMessages - (messagesPerPage * (pageno - 1));
+            int end = start - messagesPerPage + 1;
+            if (end <= 0) {
+                end = 1;
+            }
+
+            // 메시지 헤더 가져오기
+            Message[] msgs = folder.getMessages(end, start);  // 보여줄 메시지만 가져오도록 수정되어야 함.
+            FetchProfile fp = new FetchProfile();
+            fp.add(FetchProfile.Item.ENVELOPE);
+            fp.add("X-mailer");
+            folder.fetch(msgs, fp);
+            
+            //for (int i=msgs.length-1; i>=0; i--) {
+            for (int i = start; i >= end; i--) {
+                // msgs[i]에서 sender, subject, date 정보 추출
+                // sender
+                /*
+                Address [] a = msgs[i].getFrom();
+                sender = a[0].toString();
+                 **/
+                int index = i - end;
+                sender = getMyFrom((POP3Message) msgs[index]);
+
+                // subject
+                //subject = msgs[i].getSubject();  // 수정 필요
+                //subject = getMySubject((POP3Message) msgs[index]);
+                subject = msgs[index].getSubject();
+
+
+                // date
+                date = msgs[index].getSentDate().toLocaleString();
+
+
+                // 추출한 정보를 출력 포맷 사용하여 스트링으로 만들기
+                String temp = "<tr> "
+                        + " <td width=\"5%\" height=\"16\" align=\"center\">" + i + " </td> "
+                        + " <td width=\"20%\" height=\"16\" align=\"center\">" + sender + "</td>"
+                        + " <td width=\"40%\" height=\"16\" align=\"center\"> "
+                        + " <a href=get_message.jsp?msgid=" + i + "> " + subject + "</a> </td>"
+                        + " <td width=\"15%\" height=\"16\" align=\"center\">" + date + "</td>"
+                        + " <td width=\"5%\" height=\"16\" align=\"center\">"
+                        + "<a href=delete_message.jsp?msgid=" + i + "> 삭제 </a>" + "</td>"
+                        + " </tr>";
+                result += temp;
+            }
+        } catch (Exception ex) {
+            System.out.println("listMessages error: " + ex);
+        }
+
+        result += table_end;
+
+        //System.out.println("****************************************");
+        //System.out.println(result);
+        //System.out.println("****************************************");
+
+
+        // LJM 041207 - 페이지 목록 넣기
+        // line break
+        result += "<br>";
+        result += "<center>";
+
+        for (int i = 1; i <= totalPageCount; i++) {
+            if (i != this.pageno) {
+                result += "<a href=list_mail.jsp?pageno=" + i + "> " + i + "</a> &nbsp; ";
+            } else {
+                result += i + "&nbsp; ";
+            }
+            // 매 20개마다 줄 바꾸기 삽입
+            if (i % 20 == 0) {
+                result += " <br> ";
+            }
+        }
+        result += "</center>";
+
+        // close the store to issue "QUIT" command.
+        try {
+            store.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return result;
+    }
+    
     public String getMessageBody(int num) {
         String body = " ";
 
