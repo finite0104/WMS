@@ -4,6 +4,7 @@
     Author     : haei
 --%>
 
+<%@page import="control.UserAdminAgent"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,14 +15,25 @@
     </head>
     <body>
  
-        
-        <%-- menu 표시 --%>
-        <iframe  width=800 height=1000 frameborder=0 target=_top src="subframes/admin_frame_left.jsp">
-        </iframe>
+        <jsp:include page="subframes/frame_top.jsp"/>
         
         <div>
-            <h2> User list</h2>
+            <jsp:include page="subframes/admin_frame_left.jsp"/>
         </div>
         
+        <div id="main">
+            <h2> User list</h2>
+            <%
+                UserAdminAgent agent = new UserAdminAgent("127.0.0.1", 4555);
+            %>
+            <ul>
+            <%
+                for(String userID : agent.getUserList()){
+                    out.println( "<li>" + userID+ "</li>" );
+                }
+            %>
+            </ul>
+        </div>
+            <jsp:include page="subframes/footer.jsp"/>
     </body>
 </html>
