@@ -1,0 +1,24 @@
+Return-Path: <mailtester@localhost>
+Delivered-To: mailtester@localhost
+Received: from 127.0.0.1 ([127.0.0.1])
+          by 918-16-PC (JAMES SMTP Server 2.3.2) with SMTP ID 47
+          for <mailtester@localhost>;
+          Mon, 12 Jun 2017 15:25:03 +0900 (KST)
+Date: Mon, 12 Jun 2017 15:25:03 +0900 (KST)
+From: mailtester@localhost
+To: mailtester@localhost
+Message-ID: <1583589585.1.1497248703680@918-16-PC>
+Subject:  Foward Message : mailtest
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_0_1771694137.1497248703662"
+User-Agent: LJM-WM/0.1
+
+------=_Part_0_1771694137.1497248703662
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+
+*************** Original Message ***************
+javax.mail.internet.MimeMultipart@4e52c297123456
+------=_Part_0_1771694137.1497248703662--

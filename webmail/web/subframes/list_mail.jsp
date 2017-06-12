@@ -44,8 +44,16 @@ if (mailSearch != null && !mailSearch.isEmpty() && !mailSearch.equals("")) {
         }
     </script>
     <body bgcolor="#CCFF99">
-        
-        <%= mget.listMessages() %>
-
+        <%
+            if (mailSearch != null && !mailSearch.isEmpty() && !mailSearch.equals("")) {
+        %>
+            <%= mget.getSearchMessage() %>
+        <%
+            } else {
+        %>
+            <%= mget.listMessages() %>
+        <%
+            }
+        %>
     </body>
 </html>

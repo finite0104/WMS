@@ -179,7 +179,7 @@ public class MailHandleBean {
 
 
         // 메시지 제목 보여주기
-        String mail_search = "<input type=\"text\" id=\"search\"></input> <button onclick=\"mailSearch()\" value=\"검색\"></button><br/><br/>";
+        String mail_search = "<input type=\"text\" id=\"search\"></input> <button onclick=\"mailSearch()\">검색</button><br/><br/>";
         String table_start = "<table border=\"1\" width=\"100%\" height=\"30\">";
         String table_end = "</table>";
         String table_title = "<tr> "
@@ -269,8 +269,6 @@ public class MailHandleBean {
                 sender = getMyFrom((POP3Message) msgs[index]);
 
                 // subject
-                //subject = msgs[i].getSubject();  // 수정 필요
-                //subject = getMySubject((POP3Message) msgs[index]);
                 subject = msgs[index].getSubject();
 
 
@@ -295,11 +293,6 @@ public class MailHandleBean {
         }
 
         result += table_end;
-
-        //System.out.println("****************************************");
-        //System.out.println(result);
-        //System.out.println("****************************************");
-
 
         // LJM 041207 - 페이지 목록 넣기
         // line break
@@ -339,9 +332,11 @@ public class MailHandleBean {
             }
         }
 
+        // 검색된 메세지들을 저장하는 리스트
+        ArrayList<Message> msgList = new ArrayList();
 
         // 메시지 제목 보여주기
-        String mail_search = "<input type=\"text\" id=\"search\"></input> <button onclick=\"mailSearch()\" value=\"검색\"></button><br/><br/>";
+        String mail_search = "<input type=\"text\" id=\"search\"></input> <button onclick=\"mailSearch()\">검색</button><br/><br/>";
         String table_start = "<table border=\"1\" width=\"100%\" height=\"30\">";
         String table_end = "</table>";
         String table_title = "<tr> "
@@ -407,11 +402,13 @@ public class MailHandleBean {
                     if(search_subject.contains(mailSearch)) {
                         //검색하고자하는 문자가 있는 경우
                         searchCount++;
+                        msgList.add(msgs[i]);
                     }
                 }
             }
             
             if(searchCount == 0) {
+                result = mail_search;
                 result += "Not Searched Message..";
                 store.close();
                 return result;
@@ -440,13 +437,6 @@ public class MailHandleBean {
             if (end <= 0) {
                 end = 1;
             }
-
-            // 메시지 헤더 가져오기
-            Message[] msgs = folder.getMessages(end, start);  // 보여줄 메시지만 가져오도록 수정되어야 함.
-            FetchProfile fp = new FetchProfile();
-            fp.add(FetchProfile.Item.ENVELOPE);
-            fp.add("X-mailer");
-            folder.fetch(msgs, fp);
             
             //for (int i=msgs.length-1; i>=0; i--) {
             for (int i = start; i >= end; i--) {
@@ -457,17 +447,14 @@ public class MailHandleBean {
                 sender = a[0].toString();
                  **/
                 int index = i - end;
-                sender = getMyFrom((POP3Message) msgs[index]);
-
+                sender = getMyFrom((POP3Message) msgList.get(index));
+                
                 // subject
-                //subject = msgs[i].getSubject();  // 수정 필요
-                //subject = getMySubject((POP3Message) msgs[index]);
-                subject = msgs[index].getSubject();
-
+                subject = msgList.get(index).getSubject();
 
                 // date
-                date = msgs[index].getSentDate().toLocaleString();
-
+                date = msgList.get(index).getSentDate().toLocaleString();
+                
 
                 // 추출한 정보를 출력 포맷 사용하여 스트링으로 만들기
                 String temp = "<tr> "
@@ -486,11 +473,6 @@ public class MailHandleBean {
         }
 
         result += table_end;
-
-        //System.out.println("****************************************");
-        //System.out.println(result);
-        //System.out.println("****************************************");
-
 
         // LJM 041207 - 페이지 목록 넣기
         // line break

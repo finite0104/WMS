@@ -13,13 +13,15 @@
         <% if (request.getParameter("menu").equals("1")) {   // 메일 읽기%>
                 <jsp:forward page="mail_read.jsp"/>
         <%  } 
-            else if (request.getParameter("menu").equals("2")) {  // 메일 쓰기
-               out.println("메일 쓰기 선택"); %>
-               <jsp:forward page="mail_send.jsp"/>
-         <%  }
+            else if (request.getParameter("menu").equals("2")) {  // 메일 쓰기 %>
+                <jsp:forward page="mail_send.jsp"/>
+        <%  }
             else if (request.getParameter("menu").equals("3")) {  // 메일 쓰기 %>
                 <jsp:forward page="addr_book.jsp"/>
-         <%   }
+        <%  }
+            else if (request.getParameter("menu").equals("4")) {  // 휴지통 %>
+                <jsp:forward page="recycle_bin.jsp"/>
+        <%  }
             else if (request.getParameter("menu").equals("99")) {  // Logout
                 session.invalidate();
                 response.sendRedirect("index.jsp");
